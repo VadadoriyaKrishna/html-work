@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Card Effect</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 50px;
+        }
+
+        .stack-container {
+            position: relative;
+            width: 500px;
+            margin: auto;
+        }
+
+        .stack-card {
+            position: sticky;
+            top: 120px;
+            width: 100%;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            font-size: 18px;
+            text-align: left;
+            transform-origin: center top;
+            margin-bottom: -50px; /* Overlapping effect */
+        }
+
+        /* Make the content long */
+        .stack-card p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stack-container">
+        <div class="stack-card">
+            <h2>Step 1: Plan Your Project</h2>
+            <p>Start by defining the project goals, scope, and expected outcomes. Identify key stakeholders and gather requirements.</p>
+            <p>Use a project management tool to create a roadmap, outlining milestones and deadlines. Good planning ensures success.</p>
+        </div>
+
+        <div class="stack-card">
+            <h2>Step 2: Assign Tasks</h2>
+            <p>Break down the project into manageable tasks. Assign responsibilities to team members based on their expertise.</p>
+            <p>Use Kanban boards or task lists to track assignments. Clear delegation improves efficiency and teamwork.</p>
+        </div>
+
+        <div class="stack-card">
+            <h2>Step 3: Track Progress</h2>
+            <p>Monitor the progress of tasks using reports, charts, and dashboards. Adjust deadlines and priorities as needed.</p>
+            <p>Encourage team collaboration and provide regular updates to ensure everyone stays aligned with the project timeline.</p>
+        </div>
+
+        <div class="stack-card">
+            <h2>Step 4: Review & Improve</h2>
+            <p>Conduct a retrospective to analyze what worked well and what needs improvement. Gather feedback from team members.</p>
+            <p>Use the insights to enhance future projects. Continuous improvement leads to better efficiency and productivity.</p>
+        </div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        let cards = document.querySelectorAll(".stack-card");
+
+        cards.forEach((card, index) => {
+            gsap.to(card, {
+                scale: 0.95, // Reduce size
+                y: index * 40, // Move down
+                // opacity: 0.8,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top center",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
